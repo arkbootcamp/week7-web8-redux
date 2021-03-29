@@ -1,25 +1,37 @@
 const initialState = {
   user: {
-    name: 'risano akbar',
-    email: ''
+    id: null,
+    fullname: '',
+    email: '',
+    phone: ''
   },
   loading: false,
   error: ''
 }
 const userReducer = (state = initialState, action) => {
-  if (action.type === 'INCREMENT') {
-    return {
-      ...state,
-      count: state.count + 1
-    }
-  } else if (action.type === 'DECREMENT') {
-    return {
-      ...state,
-      count: state.count - 1
-    }
-  }
-  else {
-    return state
+  switch (action.type) {
+    case 'LOGIN_REQUEST':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'LOGIN_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload
+        },
+        loading: false
+      }
+    case 'LOGIN_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+    default:
+      return state
   }
 }
 export default userReducer

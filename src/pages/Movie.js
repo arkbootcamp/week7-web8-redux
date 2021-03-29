@@ -5,14 +5,17 @@ import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import { getPost, increment} from '../configs/redux/actions/post'
 
-function Movie() {
-  const dispatch = useDispatch()
+function Movie(props) {
+const dispatch = useDispatch()
   const {posts, nomor} = useSelector(state => state.post)
+  console.log(posts);
   const history = useHistory() 
+  console.log('isinya apa', props);
 
   useEffect(() => {
-    const data = {name: 'risano'}
-    dispatch(getPost(data))
+    // const data = {name: 'risano'}
+    // dispatch(getPost(data))
+    dispatch({type: 'GET_HISTORY', payload: ['product1', 'product2']})
   }, [dispatch])
   
   const handleChagePage = ()=>{
@@ -24,7 +27,7 @@ function Movie() {
   return (
     <div>
       <div className="container">
-        <h1>halaman Movie = {nomor}</h1>
+        {/* <h1>halaman Movie = {nomor}</h1>
         <button onClick={handleChangeNo}>Increment</button>
         {posts.map((post)=>
           <CardMovie
@@ -32,7 +35,7 @@ function Movie() {
             content={post.body}
             key={post.id}
           />
-        )}
+        )} */}
         <button onClick={handleChagePage}>pindah ke order</button>
       </div>
     </div>

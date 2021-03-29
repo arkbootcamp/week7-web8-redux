@@ -3,20 +3,32 @@ const initialState = {
   tranctions: ""
 }
 const historyReducer = (state = initialState, action) => {
-  if (action.type === 'GET_HISTORY') {
-    return {
+  // if (action.type === 'GET_HISTORY') {
+  //   return {
+  //     ...state,
+  //     history: action.payload
+  //   }
+  // } else if (action.type === 'GET_TRANCTION'){
+  //   return {
+  //     ...state,
+  //     tranctions: action.payload
+  //   }
+  // } else {
+  //   return state
+  // }
+  switch (action.type) {
+    case 'GET_HISTORY':
+      return {
       ...state,
       history: action.payload
     }
-  } else if (action.type === 'GET_TRANCTION'){
-    return {
+    case 'GET_TRANCTION':
+      return {
       ...state,
       tranctions: action.payload
     }
-  } 
-  
-  else {
-    return state
+    default:
+      return state
   }
 }
 export default historyReducer
