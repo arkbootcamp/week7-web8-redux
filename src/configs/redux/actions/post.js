@@ -1,11 +1,12 @@
-import axios from 'axios'
+import axiosApiInstance from '../../../helpers/axios'
 
-export const getPost = () => {
+export const getPost = (page=1) => {
   return (dispatch) => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axiosApiInstance.get(`https://jsonplaceholder.typicode.com/posts/${page}`)
       .then((res) => {
         const dataPost = res.data
-        dispatch({ type: 'GET_POST', payload: dataPost })
+        console.log(dataPost);
+        dispatch({ type: 'GET_POST1', payload: dataPost })
         // dispatch(getPost(dataPost))
       })
   }

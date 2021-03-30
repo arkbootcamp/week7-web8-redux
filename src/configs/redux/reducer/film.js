@@ -15,7 +15,8 @@ const initialState = {
       name: 'kura kura ninja',
       price: 40000
     }
-  ]
+  ],
+  product:[]
 }
 const filmReducer = (state = initialState, action) => {
   if (action.type === 'GET_FILM') {
